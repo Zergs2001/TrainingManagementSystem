@@ -34,6 +34,22 @@ namespace MatRoleClaim.Controllers
         }
 
         [RoleClaimsAuthorize("UserRoles", "Show")]
+        public ActionResult ManageAccount()
+        {
+            List<ApplicationRole> allroles = DbContext.Roles.ToList();
+            List<UserRolesViewModel> allusersWithRoles = new List<UserRolesViewModel>();
+
+            foreach (var user in DbContext.Users)
+            {
+                UserRolesViewModel userWithRoles = new UserRolesViewModel { UserId = user.Id, UserName = user.UserName, UserEmail = user.Email, Roles = new List<RoleViewModel>() };
+                user.Roles.ToList().ForEach(x => userWithRoles.Roles.Add((RoleViewModel)allroles.Find(y => y.Id == x.RoleId)));
+                allusersWithRoles.Add(userWithRoles);
+            }
+
+            return View(allusersWithRoles);
+        }
+
+        [RoleClaimsAuthorize("UserRoles", "Show")]
         public ActionResult Details(string id)
         {
             if (id == null)
