@@ -116,7 +116,46 @@ namespace MatRoleClaim.Controllers
             ViewBag.CourceCategoryId = new SelectList(db.CourceCategorys, "Id", "Name", cource.CourceCategoryId);
             return View(cource);
         }
-
+        public ActionResult AddAccountInCource(int Id)
+        {
+            string TrainerId = Request.Form["TrainerId"];
+            string TraineeId = Request.Form["TraineeId"];
+            if (!string.IsNullOrEmpty(TrainerId))
+            {
+                string[] arrListStr = TrainerId.Split(',');
+                foreach (var item in arrListStr)
+                {
+                    var output = db.TrainerInCource.Where(x => x.CourceId == Id && x.TrainerId == item).ToList();
+                    if (output.Count > 0)
+                    {
+                        continue;
+                    }
+                    var TrainerInCource = new TrainerInCource();
+                    TrainerInCource.TrainerId = item;
+                    TrainerInCource.CourceId = Id;
+                    db.TrainerInCource.Add(TrainerInCource);
+                    db.SaveChanges();
+                }
+            }
+            if (!string.IsNullOrEmpty(TraineeId))
+            {
+                string[] arrListStr1 = TraineeId.Split(',');
+                foreach (var item in arrListStr1)
+                {
+                    var output = db.TraineeInCource.Where(x => x.CourceId == Id && x.TraineeId == item).ToList();
+                    if (output.Count > 0)
+                    {
+                        continue;
+                    }
+                    var TraineeInCource = new TraineeInCource();
+                    TraineeInCource.TraineeId = item;
+                    TraineeInCource.CourceId = Id;
+                    db.TraineeInCource.Add(TraineeInCource);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Edit", new { id = Id });
+        }
         // GET: Cources/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -129,7 +168,35 @@ namespace MatRoleClaim.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Trainer = db.TrainerInCource.Where(x => x.CourceId == cource.Id);
+            ViewBag.Trainee = db.TraineeInCource.Where(x => x.CourceId == cource.Id);
             ViewBag.CourceCategoryId = new SelectList(db.CourceCategorys, "Id", "Name", cource.CourceCategoryId);
+            List<ApplicationRole> allroles = DbContext.Roles.ToList();
+            List<UserRolesViewModel> allusersWithRoles = new List<UserRolesViewModel>();
+            List<UserRolesViewModel> allusersWithRoles1 = new List<UserRolesViewModel>();
+            List<UserRolesViewModel> allusersWithRoles2 = new List<UserRolesViewModel>();
+            foreach (var user in DbContext.Users)
+            {
+                UserRolesViewModel userWithRoles = new UserRolesViewModel { UserId = user.Id, UserName = user.UserName, UserEmail = user.Email, Roles = new List<RoleViewModel>() };
+                user.Roles.ToList().ForEach(x => userWithRoles.Roles.Add((RoleViewModel)allroles.Find(y => y.Id == x.RoleId)));
+                allusersWithRoles.Add(userWithRoles);
+            }
+            foreach (var item in allusersWithRoles)
+            {
+                foreach (var item1 in item.Roles)
+                {
+                    if (item1.Name == "Trainer")
+                    {
+                        allusersWithRoles1.Add(item);
+                    }
+                    else if (item1.Name == "Trainee")
+                    {
+                        allusersWithRoles2.Add(item);
+                    }
+                }
+            }
+            ViewBag.TrainerId = new SelectList(allusersWithRoles1, "UserId", "UserName");
+            ViewBag.TraineeId = new SelectList(allusersWithRoles2, "UserId", "UserName");
             return View(cource);
         }
 
@@ -174,6 +241,26 @@ namespace MatRoleClaim.Controllers
             db.Cources.Remove(cource);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult DeleteTrainer(string id, int idCource)
+        {
+            var output =  db.TrainerInCource.Where(x=> x.CourceId == idCource && x.TrainerId == id).ToList();
+            foreach (var item in output)
+            {
+                db.TrainerInCource.Remove(item);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Edit", new { id = idCource });
+        }
+        public ActionResult DeleteTrainee(string id, int idCource)
+        {
+            var output = db.TraineeInCource.Where(x => x.CourceId == idCource && x.TraineeId == id).ToList();
+            foreach (var item in output)
+            {
+                db.TraineeInCource.Remove(item);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Edit", new { id = idCource });
         }
 
         protected override void Dispose(bool disposing)
