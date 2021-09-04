@@ -1,42 +1,62 @@
 ﻿@model MatRoleClaim.Models.Cource
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "View Cource";
 }
+<div class="m-5">
 
-<h2>Details</h2>
+    <h2>View Cource</h2>
 
-<div>
-    <h4>Cource</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CourceCategory.Name)
-        </dt>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CourceCategory.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourceCategory.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CourceCategory.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SysllabusLink)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.SysllabusLink)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SysllabusLink)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.SysllabusLink)
+            </dd>
 
-    </dl>
+            <h3>Assigned Members</h3>
+            <h4>Trainer</h4>
+            <hr />
+            @if (ViewBag.Trainer != null)
+            {
+                foreach (var item in ViewBag.Trainer)
+                {
+                    <p>@item.Trainer.UserName</p>
+                }
+            }
+
+            <h4>Trainee</h4>
+            <hr />
+            @if (ViewBag.Trainee != null)
+            {
+                foreach (var item in ViewBag.Trainee)
+                {
+                    <p>@item.UserTrainees.UserName</p>
+                }
+            }
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

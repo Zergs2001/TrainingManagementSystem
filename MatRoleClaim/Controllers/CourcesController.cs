@@ -26,6 +26,9 @@ namespace MatRoleClaim.Controllers
         // GET: Cources/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Trainer = db.TrainerInCource.Where(x => x.CourceId == id);
+            ViewBag.Trainee = db.TraineeInCource.Where(x => x.CourceId == id);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
