@@ -5,6 +5,7 @@
 }
 <div class="m-5">
     <h2>Manage Accounts</h2>
+    <p><a href="@Url.Action("Create", "Users")">Create New Trainer & Trainee</a></p>
     <table class="table">
         <tr>
             <th>
@@ -31,7 +32,7 @@
                     <td class="col-2">
                         @Html.DisplayFor(modelItem => user.UserName)
                     </td>
-                    <td class="col-2">
+                    <td class="col-1">
                         **********
                     </td>
                     <td class="col-3">
@@ -44,9 +45,11 @@
                             }
                         </ul>
                     </td>
-                    <td class="col-2">
-                        <a  href="@Url.Action("Edit", "Users", new { id = user.UserId })">Edit</a>
-                        <a  href="@Url.Action("Edit", "Users", new { id = user.UserId })">Show</a>
+                    <td class="col-3">
+                        <a href="@Url.Action("Edit", "UserRoles", new { id = user.UserId })">Change Account Level</a> |
+                        <a href="@Url.Action("Edit", "Users", new { id = user.UserId })">Edit</a> |
+                        <a href="@Url.Action("Details", "Users", new { id = user.UserId })">Show</a> |
+                        <a href="@Url.Action("Delete", "Users", new { id = user.UserId })">Delete</a> 
                     </td>
                 </tr>
             }

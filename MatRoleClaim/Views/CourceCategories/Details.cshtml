@@ -1,0 +1,27 @@
+﻿@model MatRoleClaim.Models.CourceCategory
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="m-5">
+
+    <h2>Details Cource Category </h2>
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</div>

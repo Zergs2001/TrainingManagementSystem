@@ -47,6 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.DependencyCollector, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
     </Reference>
@@ -155,12 +161,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -191,6 +191,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogsController.cs" />
+    <Compile Include="Controllers\CourceCategoriesController.cs" />
+    <Compile Include="Controllers\CourcesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleClaimsController.cs" />
@@ -204,12 +206,32 @@
     <Compile Include="Migrations\202109031051565_init.Designer.cs">
       <DependentUpon>202109031051565_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109041512017_Create_Tbl_Cource_CourceCategory.cs" />
+    <Compile Include="Migrations\202109041512017_Create_Tbl_Cource_CourceCategory.Designer.cs">
+      <DependentUpon>202109041512017_Create_Tbl_Cource_CourceCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109041530515_Update_Tbl_User.cs" />
+    <Compile Include="Migrations\202109041530515_Update_Tbl_User.Designer.cs">
+      <DependentUpon>202109041530515_Update_Tbl_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109041543118_Update_Tbl_User02.cs" />
+    <Compile Include="Migrations\202109041543118_Update_Tbl_User02.Designer.cs">
+      <DependentUpon>202109041543118_Update_Tbl_User02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109041604449_Update_Tbl_User03.cs" />
+    <Compile Include="Migrations\202109041604449_Update_Tbl_User03.Designer.cs">
+      <DependentUpon>202109041604449_Update_Tbl_User03.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\Cource.cs" />
+    <Compile Include="Models\CourceCategory.cs" />
     <Compile Include="Models\IdentityModels\ApplicationClaim.cs" />
     <Compile Include="Models\IdentityModels\ApplicationRole.cs" />
     <Compile Include="Models\IdentityModels\ApplicationUser.cs" />
+    <Compile Include="Models\TraineeInCource.cs" />
+    <Compile Include="Models\TrainerInCource.cs" />
     <Compile Include="Models\ViewModels\ApplicationUserViewModel.cs" />
     <Compile Include="Models\ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ViewModels\ClaimViewModel.cs" />
@@ -317,6 +339,16 @@
     <Content Include="Views\Blogs\Index.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
     <Content Include="Views\UserRoles\ManageAccount.cshtml" />
+    <Content Include="Views\CourceCategories\Create.cshtml" />
+    <Content Include="Views\CourceCategories\Delete.cshtml" />
+    <Content Include="Views\CourceCategories\Details.cshtml" />
+    <Content Include="Views\CourceCategories\Edit.cshtml" />
+    <Content Include="Views\CourceCategories\Index.cshtml" />
+    <Content Include="Views\Cources\Create.cshtml" />
+    <Content Include="Views\Cources\Delete.cshtml" />
+    <Content Include="Views\Cources\Details.cshtml" />
+    <Content Include="Views\Cources\Edit.cshtml" />
+    <Content Include="Views\Cources\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -348,6 +380,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202109031051565_init.resx">
       <DependentUpon>202109031051565_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109041512017_Create_Tbl_Cource_CourceCategory.resx">
+      <DependentUpon>202109041512017_Create_Tbl_Cource_CourceCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109041530515_Update_Tbl_User.resx">
+      <DependentUpon>202109041530515_Update_Tbl_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109041543118_Update_Tbl_User02.resx">
+      <DependentUpon>202109041543118_Update_Tbl_User02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109041604449_Update_Tbl_User03.resx">
+      <DependentUpon>202109041604449_Update_Tbl_User03.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

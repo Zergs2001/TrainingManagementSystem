@@ -5,7 +5,7 @@
 }
 <div class="m-5">
 
-    <h2>Edit User</h2>
+    <h2>Edit Acount</h2>
 
     @using (Html.BeginForm())
     {
@@ -37,6 +37,7 @@
                 </div>
             </div>
         </div>
-    }
 
+    }
+    <a href="@Url.Action("ManageAccount", "UserRoles")">Back to list</a>
 </div>

@@ -1,0 +1,67 @@
+﻿@model MatRoleClaim.Models.Cource
+
+@{
+    ViewBag.Title = "Create new Cource";
+}
+<div class="m-5">
+
+    <h2>Create new Cource</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SysllabusLink, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SysllabusLink, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SysllabusLink, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Cource Category</label>
+        <div class="col-md-10">
+            @Html.DropDownList("CourceCategoryId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CourceCategoryId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <h3>Assigned Members</h3>
+    <hr />
+    <div class="form-group">
+        <label class="control-label col-md-2">Trainer <hr /></label>
+        <div class="col-md-10">
+            @Html.DropDownList("TrainerId", null, htmlAttributes: new { @class = "form-control", multiple = "multiple", size = "3" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Trainee <hr /></label>
+        <div class="col-md-10">
+            @Html.DropDownList("TraineeId", null, htmlAttributes: new { @class = "form-control", multiple = "multiple", size = "3" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</div>
