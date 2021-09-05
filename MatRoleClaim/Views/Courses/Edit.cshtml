@@ -1,4 +1,4 @@
-﻿@model MatRoleClaim.Models.Cource
+﻿@model MatRoleClaim.Models.Course
 
 @{
     ViewBag.Title = "Edit Cource";
@@ -86,10 +86,10 @@
             <hr />
             @if (ViewBag.Trainee != null)
             {
-                foreach (var item in ViewBag.Trainee)
+                @*foreach (var item in ViewBag.Trainee)
                 {
                     <p>@item.UserTrainees.UserName <a href="@Url.Action("DeleteTrainee", "Cources", new { id = item.Trainer.Id, idCource =  Model.Id})">Delete</a></p>
-                }
+                }*@
             }
         </div>
     </div>

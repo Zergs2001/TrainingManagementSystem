@@ -14,6 +14,7 @@ namespace MatRoleClaim.Controllers
     [Authorize]
     public class ManageController : BaseController
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -26,6 +27,10 @@ namespace MatRoleClaim.Controllers
             {
                 HasPassword = HasPassword()
             };
+            ViewBag.Trainer = db.TrainerInCource.Where(x => x.TrainerId == userId);
+            ViewBag.Trainee = db.TraineeInCource.Where(x => x.TraineeId == userId);
+            ViewBag.TrainerCount = db.TrainerInCource.Where(x => x.TrainerId == userId).Count();
+            ViewBag.TraineeCount = db.TraineeInCource.Where(x => x.TraineeId == userId).Count();
             return View(model);
         }
 

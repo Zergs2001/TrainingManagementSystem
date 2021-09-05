@@ -43,7 +43,7 @@ namespace MatRoleClaim.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.CourceCategories",
+                "dbo.CourseCategories",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -52,7 +52,7 @@ namespace MatRoleClaim.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Cources",
+                "dbo.Courses",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -62,7 +62,7 @@ namespace MatRoleClaim.Migrations
                         ApplicationUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.CourceCategories", t => t.CourceCategoryId)
+                .ForeignKey("dbo.CourseCategories", t => t.CourceCategoryId)
                 .ForeignKey("dbo.Users", t => t.ApplicationUser_Id)
                 .Index(t => t.CourceCategoryId)
                 .Index(t => t.ApplicationUser_Id);
@@ -73,13 +73,12 @@ namespace MatRoleClaim.Migrations
                     {
                         TraineeId = c.String(nullable: false, maxLength: 128),
                         CourceId = c.Int(nullable: false),
-                        UserTrainees_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.TraineeId, t.CourceId })
-                .ForeignKey("dbo.Cources", t => t.CourceId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserTrainees_Id)
-                .Index(t => t.CourceId)
-                .Index(t => t.UserTrainees_Id);
+                .ForeignKey("dbo.Courses", t => t.CourceId, cascadeDelete: true)
+                .ForeignKey("dbo.Users", t => t.TraineeId, cascadeDelete: true)
+                .Index(t => t.TraineeId)
+                .Index(t => t.CourceId);
             
             CreateTable(
                 "dbo.Users",
@@ -129,7 +128,7 @@ namespace MatRoleClaim.Migrations
                         CourceId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.TrainerId, t.CourceId })
-                .ForeignKey("dbo.Cources", t => t.CourceId, cascadeDelete: true)
+                .ForeignKey("dbo.Courses", t => t.CourceId, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.TrainerId, cascadeDelete: true)
                 .Index(t => t.TrainerId)
                 .Index(t => t.CourceId);
@@ -151,15 +150,15 @@ namespace MatRoleClaim.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.TraineeInCources", "UserTrainees_Id", "dbo.Users");
+            DropForeignKey("dbo.TraineeInCources", "TraineeId", "dbo.Users");
             DropForeignKey("dbo.TrainerInCources", "TrainerId", "dbo.Users");
-            DropForeignKey("dbo.TrainerInCources", "CourceId", "dbo.Cources");
+            DropForeignKey("dbo.TrainerInCources", "CourceId", "dbo.Courses");
             DropForeignKey("dbo.UserRoles", "UserId", "dbo.Users");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.Users");
-            DropForeignKey("dbo.Cources", "ApplicationUser_Id", "dbo.Users");
+            DropForeignKey("dbo.Courses", "ApplicationUser_Id", "dbo.Users");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.Users");
-            DropForeignKey("dbo.TraineeInCources", "CourceId", "dbo.Cources");
-            DropForeignKey("dbo.Cources", "CourceCategoryId", "dbo.CourceCategories");
+            DropForeignKey("dbo.TraineeInCources", "CourceId", "dbo.Courses");
+            DropForeignKey("dbo.Courses", "CourceCategoryId", "dbo.CourseCategories");
             DropForeignKey("dbo.UserRoles", "RoleId", "dbo.Roles");
             DropForeignKey("dbo.RoleClaims", "ClaimId", "dbo.Claims");
             DropForeignKey("dbo.RoleClaims", "RoleId", "dbo.Roles");
@@ -170,10 +169,10 @@ namespace MatRoleClaim.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.Users", "UserNameIndex");
-            DropIndex("dbo.TraineeInCources", new[] { "UserTrainees_Id" });
             DropIndex("dbo.TraineeInCources", new[] { "CourceId" });
-            DropIndex("dbo.Cources", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.Cources", new[] { "CourceCategoryId" });
+            DropIndex("dbo.TraineeInCources", new[] { "TraineeId" });
+            DropIndex("dbo.Courses", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.Courses", new[] { "CourceCategoryId" });
             DropIndex("dbo.UserRoles", new[] { "RoleId" });
             DropIndex("dbo.UserRoles", new[] { "UserId" });
             DropIndex("dbo.Roles", "RoleNameIndex");
@@ -183,8 +182,8 @@ namespace MatRoleClaim.Migrations
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.Users");
             DropTable("dbo.TraineeInCources");
-            DropTable("dbo.Cources");
-            DropTable("dbo.CourceCategories");
+            DropTable("dbo.Courses");
+            DropTable("dbo.CourseCategories");
             DropTable("dbo.UserRoles");
             DropTable("dbo.Roles");
             DropTable("dbo.Claims");

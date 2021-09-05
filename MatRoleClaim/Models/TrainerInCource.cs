@@ -16,7 +16,7 @@ namespace MatRoleClaim.Models
         [Key]
         [Column(Order = 1)]
         public int CourceId { get; set; }
-        public virtual Cource Cource { get; set; }
+        public virtual Course Cource { get; set; }
         public virtual ApplicationUser Trainer { get; set; }
     }
 }

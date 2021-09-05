@@ -11,26 +11,26 @@ using MatRoleClaim.Models;
 
 namespace MatRoleClaim.Controllers
 {
-    public class CourceCategoriesController : Controller
+    public class CourseCategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CourceCategories
-        [RoleClaimsAuthorize("CourceCategories", "Show")]
+        [RoleClaimsAuthorize("CourseCategories", "Show")]
         public ActionResult Index()
         {
-            return View(db.CourceCategorys.ToList());
+            return View(db.CourseCategorys.ToList());
         }
 
         // GET: CourceCategories/Details/5
-        [RoleClaimsAuthorize("CourceCategories", "Show")]
+        [RoleClaimsAuthorize("CourseCategories", "Show")]
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CourceCategory courceCategory = db.CourceCategorys.Find(id);
+            CourseCategory courceCategory = db.CourseCategorys.Find(id);
             if (courceCategory == null)
             {
                 return HttpNotFound();
@@ -38,7 +38,7 @@ namespace MatRoleClaim.Controllers
             return View(courceCategory);
         }
 
-        [RoleClaimsAuthorize("CourceCategories", "Add")]
+        [RoleClaimsAuthorize("CourseCategories", "Add")]
         // GET: CourceCategories/Create
         public ActionResult Create()
         {
@@ -50,12 +50,12 @@ namespace MatRoleClaim.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [RoleClaimsAuthorize("CourceCategories", "Add")]
-        public ActionResult Create([Bind(Include = "Id,Name")] CourceCategory courceCategory)
+        [RoleClaimsAuthorize("CourseCategories", "Add")]
+        public ActionResult Create([Bind(Include = "Id,Name")] CourseCategory courceCategory)
         {
             if (ModelState.IsValid)
             {
-                db.CourceCategorys.Add(courceCategory);
+                db.CourseCategorys.Add(courceCategory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -64,14 +64,14 @@ namespace MatRoleClaim.Controllers
         }
 
         // GET: CourceCategories/Edit/5
-        [RoleClaimsAuthorize("CourceCategories", "Edit")]
+        [RoleClaimsAuthorize("CourseCategories", "Edit")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CourceCategory courceCategory = db.CourceCategorys.Find(id);
+            CourseCategory courceCategory = db.CourseCategorys.Find(id);
             if (courceCategory == null)
             {
                 return HttpNotFound();
@@ -84,8 +84,8 @@ namespace MatRoleClaim.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [RoleClaimsAuthorize("CourceCategories", "Edit")]
-        public ActionResult Edit([Bind(Include = "Id,Name")] CourceCategory courceCategory)
+        [RoleClaimsAuthorize("CourseCategories", "Edit")]
+        public ActionResult Edit([Bind(Include = "Id,Name")] CourseCategory courceCategory)
         {
             if (ModelState.IsValid)
             {
@@ -97,14 +97,14 @@ namespace MatRoleClaim.Controllers
         }
 
         // GET: CourceCategories/Delete/5
-        [RoleClaimsAuthorize("CourceCategories", "Delete")]
+        [RoleClaimsAuthorize("CourseCategories", "Delete")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CourceCategory courceCategory = db.CourceCategorys.Find(id);
+            CourseCategory courceCategory = db.CourseCategorys.Find(id);
             if (courceCategory == null)
             {
                 return HttpNotFound();
@@ -114,12 +114,12 @@ namespace MatRoleClaim.Controllers
 
         // POST: CourceCategories/Delete/5
         [HttpPost, ActionName("Delete")]
-        [RoleClaimsAuthorize("CourceCategories", "Delete")]
+        [RoleClaimsAuthorize("CourseCategories", "Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CourceCategory courceCategory = db.CourceCategorys.Find(id);
-            db.CourceCategorys.Remove(courceCategory);
+            CourseCategory courceCategory = db.CourseCategorys.Find(id);
+            db.CourseCategorys.Remove(courceCategory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

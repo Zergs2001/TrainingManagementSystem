@@ -13,12 +13,12 @@ namespace MatRoleClaim.Models.IdentityModels
         public ApplicationUser()
         {
             TrainerInCource = new HashSet<TrainerInCource>();
-            CourceTrainees = new HashSet<Cource>();
+            CourceTrainees = new HashSet<Course>();
         }
         public string Phone { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public virtual ICollection<TrainerInCource> TrainerInCource { get; set; }
-        public virtual ICollection<Cource> CourceTrainees { get; set; }
+        public virtual ICollection<Course> CourceTrainees { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

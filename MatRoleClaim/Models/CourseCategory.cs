@@ -5,14 +5,14 @@ using System.Web;
 
 namespace MatRoleClaim.Models
 {
-    public class CourceCategory
+    public class CourseCategory
     {
-        public CourceCategory()
+        public CourseCategory()
         {
-            Cources = new HashSet<Cource>();
+            Cources = new HashSet<Course>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Cource> Cources { get; set; }
+        public virtual ICollection<Course> Cources { get; set; }
     }
 }

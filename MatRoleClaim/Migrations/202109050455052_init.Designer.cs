@@ -13,7 +13,7 @@ namespace MatRoleClaim.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202109050342239_init"; }
+            get { return "202109050455052_init"; }
         }
         
         string IMigrationMetadata.Source

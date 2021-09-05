@@ -14,8 +14,8 @@ namespace MatRoleClaim.Models
         }
 
         public DbSet<ApplicationClaim> Claims { get; set; }
-        public DbSet<CourceCategory> CourceCategorys { get; set; }
-        public DbSet<Cource> Cources { get; set; }
+        public DbSet<CourseCategory> CourseCategorys { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public DbSet<TrainerInCource> TrainerInCource { get; set; }
         public DbSet<TraineeInCource> TraineeInCource { get; set; }
 
