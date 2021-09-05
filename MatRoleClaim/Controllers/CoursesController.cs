@@ -122,7 +122,7 @@ namespace MatRoleClaim.Controllers
             return View(cource);
         }
         [RoleClaimsAuthorize("Courses", "Add")]
-        public ActionResult AddAccountInCource(int Id)
+        public ActionResult AddAccountInCourse(int Id)
         {
             string TrainerId = Request.Form["TrainerId"];
             string TraineeId = Request.Form["TraineeId"];

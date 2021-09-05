@@ -7,25 +7,33 @@
 <div class="m-5">
     @if (ViewBag.TrainerCount != 0)
     {
+        var i = 0;
         <div class="row">
             @foreach (var item in ViewBag.Trainer)
             {
-                <div class="card col-3">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">@item.Cource.Name</h5>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <p class="text-center">
-                            @Html.ActionLink("View", "Details", new { id = item.CourceId })
-                        </p>
+
+                if (i == 0)
+                {
+                    <div class="card col-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">@item.Cource.Name</h5>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <p class="text-center">
+                                @Html.ActionLink("View", "Details", new { id = item.CourceId })
+                            </p>
+                        </div>
                     </div>
-                </div>
+                    i++;
+                }
+
+
             }
             <div class="col-1"></div>
             <div class="card col-8">
@@ -100,25 +108,31 @@
     @*TraineeCount*@
     @if (ViewBag.TraineeCount != 0)
     {
+        var y = 0;
         <div class="row">
             @foreach (var item in ViewBag.Trainee)
             {
-                <div class="card col-3">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">@item.Cource.Name</h5>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <p class="text-center">
-                            @Html.ActionLink("View", "Details", new { id = item.CourceId })
-                        </p>
+                if (y == 0)
+                {
+                    <div class="card col-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">@item.Cource.Name</h5>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <p class="text-center">
+                                @*@Html.ActionLink("View", "Details", new { id = item.CourceId })*@
+                                <a href="#">View</a>
+                            </p>
+                        </div>
                     </div>
-                </div>
+                    y++;
+                }
             }
             <div class="col-1"></div>
             <div class="card col-8">
@@ -182,7 +196,8 @@
                         <br />
                         <br />
                         <p class="text-center">
-                            @Html.ActionLink("View", "Details", new { id = item.CourceId })
+                            @*@Html.ActionLink("View", "Details", new { id = item.CourceId })*@
+                            <a href="#">View</a>
                         </p>
                     </div>
                 </div>
