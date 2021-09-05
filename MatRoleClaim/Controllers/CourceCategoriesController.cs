@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MatRoleClaim.Attributes;
 using MatRoleClaim.Models;
 
 namespace MatRoleClaim.Controllers
@@ -15,12 +16,14 @@ namespace MatRoleClaim.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CourceCategories
+        [RoleClaimsAuthorize("CourceCategories", "Show")]
         public ActionResult Index()
         {
             return View(db.CourceCategorys.ToList());
         }
 
         // GET: CourceCategories/Details/5
+        [RoleClaimsAuthorize("CourceCategories", "Show")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,6 +38,7 @@ namespace MatRoleClaim.Controllers
             return View(courceCategory);
         }
 
+        [RoleClaimsAuthorize("CourceCategories", "Add")]
         // GET: CourceCategories/Create
         public ActionResult Create()
         {
@@ -46,6 +50,7 @@ namespace MatRoleClaim.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RoleClaimsAuthorize("CourceCategories", "Add")]
         public ActionResult Create([Bind(Include = "Id,Name")] CourceCategory courceCategory)
         {
             if (ModelState.IsValid)
@@ -59,6 +64,7 @@ namespace MatRoleClaim.Controllers
         }
 
         // GET: CourceCategories/Edit/5
+        [RoleClaimsAuthorize("CourceCategories", "Edit")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +84,7 @@ namespace MatRoleClaim.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RoleClaimsAuthorize("CourceCategories", "Edit")]
         public ActionResult Edit([Bind(Include = "Id,Name")] CourceCategory courceCategory)
         {
             if (ModelState.IsValid)
@@ -90,6 +97,7 @@ namespace MatRoleClaim.Controllers
         }
 
         // GET: CourceCategories/Delete/5
+        [RoleClaimsAuthorize("CourceCategories", "Delete")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +114,7 @@ namespace MatRoleClaim.Controllers
 
         // POST: CourceCategories/Delete/5
         [HttpPost, ActionName("Delete")]
+        [RoleClaimsAuthorize("CourceCategories", "Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

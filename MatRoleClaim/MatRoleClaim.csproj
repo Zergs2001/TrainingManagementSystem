@@ -201,29 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109031051565_init.cs" />
-    <Compile Include="Migrations\202109031051565_init.Designer.cs">
-      <DependentUpon>202109031051565_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109041512017_Create_Tbl_Cource_CourceCategory.cs" />
-    <Compile Include="Migrations\202109041512017_Create_Tbl_Cource_CourceCategory.Designer.cs">
-      <DependentUpon>202109041512017_Create_Tbl_Cource_CourceCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109041530515_Update_Tbl_User.cs" />
-    <Compile Include="Migrations\202109041530515_Update_Tbl_User.Designer.cs">
-      <DependentUpon>202109041530515_Update_Tbl_User.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109041543118_Update_Tbl_User02.cs" />
-    <Compile Include="Migrations\202109041543118_Update_Tbl_User02.Designer.cs">
-      <DependentUpon>202109041543118_Update_Tbl_User02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109041604449_Update_Tbl_User03.cs" />
-    <Compile Include="Migrations\202109041604449_Update_Tbl_User03.Designer.cs">
-      <DependentUpon>202109041604449_Update_Tbl_User03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109050200551_Update_01.cs" />
-    <Compile Include="Migrations\202109050200551_Update_01.Designer.cs">
-      <DependentUpon>202109050200551_Update_01.cs</DependentUpon>
+    <Compile Include="Migrations\202109050342239_init.cs" />
+    <Compile Include="Migrations\202109050342239_init.Designer.cs">
+      <DependentUpon>202109050342239_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -374,23 +354,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109031051565_init.resx">
-      <DependentUpon>202109031051565_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109041512017_Create_Tbl_Cource_CourceCategory.resx">
-      <DependentUpon>202109041512017_Create_Tbl_Cource_CourceCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109041530515_Update_Tbl_User.resx">
-      <DependentUpon>202109041530515_Update_Tbl_User.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109041543118_Update_Tbl_User02.resx">
-      <DependentUpon>202109041543118_Update_Tbl_User02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109041604449_Update_Tbl_User03.resx">
-      <DependentUpon>202109041604449_Update_Tbl_User03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109050200551_Update_01.resx">
-      <DependentUpon>202109050200551_Update_01.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109050342239_init.resx">
+      <DependentUpon>202109050342239_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

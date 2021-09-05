@@ -233,14 +233,9 @@ C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManage
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.csproj.AssemblyReference.cache
-C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.init.resources
-C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.csproj.GenerateResource.cache
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.csproj.CoreCompileInputs.cache
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.csproj.CopyComplete
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.dll
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.pdb
-C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.Create_Tbl_Cource_CourceCategory.resources
-C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.Update_Tbl_User.resources
-C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.Update_Tbl_User02.resources
-C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.Update_Tbl_User03.resources
-C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.Update_01.resources
+C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.init.resources
+C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.csproj.GenerateResource.cache
