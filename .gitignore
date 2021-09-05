@@ -50,3 +50,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+MatRoleClaim/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+MatRoleClaim/obj/Debug/MatRoleClaim.csproj.AssemblyReference.cache
