@@ -10,5 +10,11 @@ namespace MatRoleClaim.Models.ViewModels
         public string Id { get; set; }
         public string Email { get; set; }
         public string NewPassword { get; set; }
+        public string Phone { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public string UserName
+        {
+            get; set;
+        }
     }
 }

@@ -10,13 +10,6 @@ namespace MatRoleClaim.Controllers
             return View();
         }
 
-        public ActionResult Blog()
-        {
-            ViewBag.Message = "Your blog page.";
-
-            return View(DbContext.Blogs.Include(x => x.Author));
-        }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

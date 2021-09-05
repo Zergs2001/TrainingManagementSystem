@@ -64,6 +64,8 @@ namespace MatRoleClaim.Controllers
                 UserId = applicationUser.Id,
                 UserName = applicationUser.UserName,
                 UserEmail = applicationUser.Email,
+                Phone = applicationUser.Phone,
+                DateOfBirth = applicationUser.DateOfBirth,
                 Roles = new List<RoleViewModel>()
             };
 

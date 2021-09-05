@@ -190,7 +190,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\BlogsController.cs" />
     <Compile Include="Controllers\CourceCategoriesController.cs" />
     <Compile Include="Controllers\CourcesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -222,9 +221,12 @@
     <Compile Include="Migrations\202109041604449_Update_Tbl_User03.Designer.cs">
       <DependentUpon>202109041604449_Update_Tbl_User03.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109050200551_Update_01.cs" />
+    <Compile Include="Migrations\202109050200551_Update_01.Designer.cs">
+      <DependentUpon>202109050200551_Update_01.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Cource.cs" />
     <Compile Include="Models\CourceCategory.cs" />
     <Compile Include="Models\IdentityModels\ApplicationClaim.cs" />
@@ -332,12 +334,6 @@
     <Content Include="Views\UserRoles\Details.cshtml" />
     <Content Include="Views\UserRoles\Edit.cshtml" />
     <Content Include="Views\UserRoles\Index.cshtml" />
-    <Content Include="Views\Blogs\Create.cshtml" />
-    <Content Include="Views\Blogs\Delete.cshtml" />
-    <Content Include="Views\Blogs\Details.cshtml" />
-    <Content Include="Views\Blogs\Edit.cshtml" />
-    <Content Include="Views\Blogs\Index.cshtml" />
-    <Content Include="Views\Home\Blog.cshtml" />
     <Content Include="Views\UserRoles\ManageAccount.cshtml" />
     <Content Include="Views\CourceCategories\Create.cshtml" />
     <Content Include="Views\CourceCategories\Delete.cshtml" />
@@ -392,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109041604449_Update_Tbl_User03.resx">
       <DependentUpon>202109041604449_Update_Tbl_User03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109050200551_Update_01.resx">
+      <DependentUpon>202109050200551_Update_01.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

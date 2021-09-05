@@ -6,6 +6,7 @@
 <div class="m-5">
     <h2>Manage Accounts</h2>
     <p><a href="@Url.Action("Create", "Users")">Create New Trainer & Trainee</a></p>
+    @*<a href="@Url.Action("Register", "Account")">Create New Trainer & Trainee</a>*@
     <table class="table">
         <tr>
             <th>
@@ -49,7 +50,7 @@
                         <a href="@Url.Action("Edit", "UserRoles", new { id = user.UserId })">Change Account Level</a> |
                         <a href="@Url.Action("Edit", "Users", new { id = user.UserId })">Edit</a> |
                         <a href="@Url.Action("Details", "Users", new { id = user.UserId })">Show</a> |
-                        <a href="@Url.Action("Delete", "Users", new { id = user.UserId })">Delete</a> 
+                        <a href="@Url.Action("Delete", "Users", new { id = user.UserId })">Delete</a>
                     </td>
                 </tr>
             }

@@ -216,7 +216,6 @@ C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManage
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\bin\Microsoft.Owin.xml
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\bin\Microsoft.Owin.Security.xml
-C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\bin\Newtonsoft.Json.xml
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\bin\System.Diagnostics.DiagnosticSource.xml
@@ -244,3 +243,4 @@ C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManage
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.Update_Tbl_User.resources
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.Update_Tbl_User02.resources
 C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.Update_Tbl_User03.resources
+C:\Users\QuangLV\Dropbox\My PC (LAPTOP-I38CN0CA)\Documents\GitHub\TrainingManagementSystem\MatRoleClaim\obj\Debug\MatRoleClaim.Migrations.Update_01.resources

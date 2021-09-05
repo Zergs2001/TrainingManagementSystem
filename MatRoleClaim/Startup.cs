@@ -56,11 +56,11 @@ namespace MatRoleClaim
                     var result1 = userManager.AddToRole(userAdmin.Id, "SuperAdmin");
                 }
 
-                Blog newPost1 = new Blog { Id = 1, Title = "Test 1", Content = "Test 1 content...", AuthorId = userAdmin.Id, PostDate = DateTime.Now };
-                Blog newPost2 = new Blog { Id = 2, Title = "Test 2", Content = "Test 2 content...", AuthorId = userAdmin.Id, PostDate = DateTime.Now };
-                context.Blogs.Add(newPost1);
-                context.Blogs.Add(newPost2);
-                context.SaveChanges();
+                //Blog newPost1 = new Blog { Id = 1, Title = "Test 1", Content = "Test 1 content...", AuthorId = userAdmin.Id, PostDate = DateTime.Now };
+                //Blog newPost2 = new Blog { Id = 2, Title = "Test 2", Content = "Test 2 content...", AuthorId = userAdmin.Id, PostDate = DateTime.Now };
+                //context.Blogs.Add(newPost1);
+                //context.Blogs.Add(newPost2);
+                //context.SaveChanges();
             }
 
             // creating Creating Web Admin role    

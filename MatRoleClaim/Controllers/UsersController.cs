@@ -49,16 +49,16 @@ namespace MatRoleClaim.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RoleClaimsAuthorize("Users", "Add")]
-        public async Task<ActionResult> Create([Bind(Include = "UserRoles,Email,Password,ConfirmPassword")] RegisterViewModel registerViewModel)
+        public async Task<ActionResult> Create([Bind(Include = "UserName,UserRoles,Email,Password,ConfirmPassword,DateOfBirth,Phone")] RegisterViewModel registerViewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = registerViewModel.Email, Email = registerViewModel.Email };
+                var user = new ApplicationUser { UserName = registerViewModel.Email, Email = registerViewModel.Email, DateOfBirth = registerViewModel.DateOfBirth, Phone = registerViewModel.Phone };
                 var result = await UserManager.CreateAsync(user, registerViewModel.Password);
                 if (result.Succeeded)
                 {
                     await UserManager.AddToRoleAsync(user.Id, registerViewModel.UserRoles);
-                    return RedirectToAction("Index");
+                    return Redirect("/UserRoles/ManageAccount");
                 }
                 AddErrors(result);
             }
@@ -80,18 +80,22 @@ namespace MatRoleClaim.Controllers
                 return HttpNotFound();
             }
 
-            ApplicationUserViewModel applicationUserViewModel = new ApplicationUserViewModel { Id = applicationUser.Id, Email = applicationUser.Email, NewPassword = "" };
+            ApplicationUserViewModel applicationUserViewModel = new ApplicationUserViewModel { Id = applicationUser.Id, Email = applicationUser.Email, NewPassword = "", UserName = applicationUser.UserName, DateOfBirth = applicationUser.DateOfBirth, Phone = applicationUser.Phone };
             return View(applicationUserViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RoleClaimsAuthorize("Users", "Edit")]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,NewPassword")] ApplicationUserViewModel applicationUserViewModel)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,NewPassword,UserName,DateOfBirth,Phone")] ApplicationUserViewModel applicationUserViewModel)
         {
             if (ModelState.IsValid)
             {
+
                 ApplicationUser applicationUser = DbContext.Users.Find(applicationUserViewModel.Id);
+                applicationUser.UserName = applicationUserViewModel.UserName;
+                applicationUser.Phone = applicationUserViewModel.Phone;
+                applicationUser.DateOfBirth = applicationUserViewModel.DateOfBirth;
                 if (applicationUser == null)
                     return HttpNotFound();
 
@@ -101,9 +105,8 @@ namespace MatRoleClaim.Controllers
                     var token = await UserManager.GeneratePasswordResetTokenAsync(applicationUser.Id);
                     result = await UserManager.ResetPasswordAsync(applicationUser.Id, token, applicationUserViewModel.NewPassword);
                 }
-
-                if (result.Succeeded)
-                    return RedirectToAction("Index");
+                var result1 = await UserManager.UpdateAsync(applicationUser);
+                return Redirect("/UserRoles/ManageAccount");
             }
 
             return View(applicationUserViewModel);
@@ -132,7 +135,7 @@ namespace MatRoleClaim.Controllers
             ApplicationUser applicationUser = DbContext.Users.Find(id);
             DbContext.Users.Remove(applicationUser);
             DbContext.SaveChanges();
-            return RedirectToAction("Index");
+            return Redirect("/UserRoles/ManageAccount");
         }
 
 
