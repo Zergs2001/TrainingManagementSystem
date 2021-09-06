@@ -201,13 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109050455052_init.cs" />
-    <Compile Include="Migrations\202109050455052_init.Designer.cs">
-      <DependentUpon>202109050455052_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109061316379_update_tbl_User.cs" />
-    <Compile Include="Migrations\202109061316379_update_tbl_User.Designer.cs">
-      <DependentUpon>202109061316379_update_tbl_User.cs</DependentUpon>
+    <Compile Include="Migrations\202109061338295_inint.cs" />
+    <Compile Include="Migrations\202109061338295_inint.Designer.cs">
+      <DependentUpon>202109061338295_inint.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -358,11 +354,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109050455052_init.resx">
-      <DependentUpon>202109050455052_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109061316379_update_tbl_User.resx">
-      <DependentUpon>202109061316379_update_tbl_User.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109061338295_inint.resx">
+      <DependentUpon>202109061338295_inint.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

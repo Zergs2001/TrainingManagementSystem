@@ -7,13 +7,13 @@ namespace MatRoleClaim.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class update_tbl_User : IMigrationMetadata
+    public sealed partial class inint : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(update_tbl_User));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(inint));
         
         string IMigrationMetadata.Id
         {
-            get { return "202109061316379_update_tbl_User"; }
+            get { return "202109061338295_inint"; }
         }
         
         string IMigrationMetadata.Source

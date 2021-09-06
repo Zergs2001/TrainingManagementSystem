@@ -32,7 +32,7 @@ namespace MatRoleClaim
             var roleManager = new ApplicationRoleManager(new ApplicationRoleStore(context));
             var userManager = new ApplicationUserManager(new ApplicationUserStore(context));
 
-            //creating Creating SuperAdmin role, user and default blog posts
+            //creating Creating SuperAdmin role, user and default 
             if (!roleManager.RoleExists("Administrator"))
             {
                 // create ALL Claims
@@ -46,7 +46,7 @@ namespace MatRoleClaim
                 roleManager.AddClaims(roleAdmin.Id, context.Claims.Select(x=>x.Id));
                 
                 // create a Admin super user                 
-                var userAdmin = new ApplicationUser { UserName = "admin@gmail.com", Email = "admin@gmail.com",Phone = "0865251224"};
+                var userAdmin = new ApplicationUser { UserName = "admin@gmail.com", Email = "admin@gmail.com",Phone = "0865251224", Name = "Admin", Address="Admin"};
                 string userAdminPassword = "123456";
                 var chkUser = userManager.Create(userAdmin, userAdminPassword);
 
@@ -61,6 +61,13 @@ namespace MatRoleClaim
                 //context.Blogs.Add(newPost1);
                 //context.Blogs.Add(newPost2);
                 //context.SaveChanges();
+            }
+
+            // creating Creating Trainer   
+            if (!roleManager.RoleExists("Training Staff"))
+            {
+                var role = new ApplicationRole { Name = "Training Staff", Description = "Training Staff" };
+                roleManager.Create(role);
             }
 
             // creating Creating Trainer   

@@ -3,7 +3,7 @@ namespace MatRoleClaim.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class inint : DbMigration
     {
         public override void Up()
         {
@@ -85,6 +85,8 @@ namespace MatRoleClaim.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(),
+                        Address = c.String(),
                         Phone = c.String(),
                         DateOfBirth = c.DateTime(),
                         Email = c.String(maxLength: 256),
