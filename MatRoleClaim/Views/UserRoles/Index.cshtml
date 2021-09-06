@@ -9,7 +9,7 @@
         <tbody>
             @foreach (var user in Model)
             {
-                var check = user.Roles.Where(x => x.Name == "Administrator").ToList();
+                var check = user.Roles.Where(x => x.Name == "Training Staff").ToList();
                 if (check.Count > 0)
                 {
                     <tr class="col-12">

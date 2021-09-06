@@ -49,11 +49,11 @@ namespace MatRoleClaim.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RoleClaimsAuthorize("Users", "Add")]
-        public async Task<ActionResult> Create([Bind(Include = "UserName,UserRoles,Email,Password,ConfirmPassword,DateOfBirth,Phone")] RegisterViewModel registerViewModel)
+        public async Task<ActionResult> Create([Bind(Include = "UserName,UserRoles,Email,Password,ConfirmPassword,DateOfBirth,Phone,Address,Name")] RegisterViewModel registerViewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = registerViewModel.Email, Email = registerViewModel.Email, DateOfBirth = registerViewModel.DateOfBirth, Phone = registerViewModel.Phone };
+                var user = new ApplicationUser { UserName = registerViewModel.Email, Email = registerViewModel.Email, DateOfBirth = registerViewModel.DateOfBirth, Phone = registerViewModel.Phone, Name = registerViewModel.Name, Address = registerViewModel.Address };
                 var result = await UserManager.CreateAsync(user, registerViewModel.Password);
                 if (result.Succeeded)
                 {
@@ -80,14 +80,14 @@ namespace MatRoleClaim.Controllers
                 return HttpNotFound();
             }
 
-            ApplicationUserViewModel applicationUserViewModel = new ApplicationUserViewModel { Id = applicationUser.Id, Email = applicationUser.Email, NewPassword = "", UserName = applicationUser.UserName, DateOfBirth = applicationUser.DateOfBirth, Phone = applicationUser.Phone };
+            ApplicationUserViewModel applicationUserViewModel = new ApplicationUserViewModel { Id = applicationUser.Id, Email = applicationUser.Email, NewPassword = "", UserName = applicationUser.UserName, DateOfBirth = applicationUser.DateOfBirth, Phone = applicationUser.Phone, Name = applicationUser.Name, Address = applicationUser.Address };
             return View(applicationUserViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RoleClaimsAuthorize("Users", "Edit")]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,NewPassword,UserName,DateOfBirth,Phone")] ApplicationUserViewModel applicationUserViewModel)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,NewPassword,UserName,DateOfBirth,Phone,Address,Name")] ApplicationUserViewModel applicationUserViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -96,6 +96,8 @@ namespace MatRoleClaim.Controllers
                 applicationUser.UserName = applicationUserViewModel.UserName;
                 applicationUser.Phone = applicationUserViewModel.Phone;
                 applicationUser.DateOfBirth = applicationUserViewModel.DateOfBirth;
+                applicationUser.Name = applicationUserViewModel.Name;
+                applicationUser.Address = applicationUserViewModel.Address;
                 if (applicationUser == null)
                     return HttpNotFound();
 

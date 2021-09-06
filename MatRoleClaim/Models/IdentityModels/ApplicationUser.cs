@@ -15,6 +15,8 @@ namespace MatRoleClaim.Models.IdentityModels
             TrainerInCource = new HashSet<TrainerInCource>();
             CourceTrainees = new HashSet<Course>();
         }
+        public string Name { get; set; }
+        public string Address { get; set; }
         public string Phone { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public virtual ICollection<TrainerInCource> TrainerInCource { get; set; }

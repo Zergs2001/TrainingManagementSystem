@@ -1,11 +1,11 @@
 ﻿@model MatRoleClaim.Models.Course
 
 @{
-    ViewBag.Title = "Create new Cource";
+    ViewBag.Title = "Create new Course";
 }
 <div class="m-5">
 
-    <h2>Create new Cource</h2>
+    <h2>Create new Course</h2>
 
     @using (Html.BeginForm())
     {
@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2">Cource Category</label>
+        <label class="control-label col-md-2">Course Category</label>
         <div class="col-md-10">
             @Html.DropDownList("CourceCategoryId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.CourceCategoryId, "", new { @class = "text-danger" })
