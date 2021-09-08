@@ -42,7 +42,19 @@ namespace MatRoleClaim.Controllers
         [RoleClaimsAuthorize("Users", "Add")]
         public ActionResult Create()
         {
-            ViewBag.Name = new SelectList(DbContext.Roles.ToList(), "Name", "Name");
+            List<string> q = ViewBag.CurrentUserRoles;
+            if (q.Where(x => x.Contains("Administrator")).Count() > 0)
+            {
+                ViewBag.Name = new SelectList(DbContext.Roles.Where(x => x.Name != "spadmin" && x.Name != "Trainer" && x.Name != "Trainee").ToList(), "Name", "Name");
+            }
+            else if (q.Where(x => x.Contains("Training Staff")).Count() > 0)
+            {
+                ViewBag.Name = new SelectList(DbContext.Roles.Where(x => x.Name != "spadmin" && x.Name != "Administrator").ToList(), "Name", "Name");
+            }
+            else
+            {
+                ViewBag.Name = new SelectList(DbContext.Roles.ToList(), "Name", "Name");
+            }
             return View();
         }
 
@@ -63,7 +75,7 @@ namespace MatRoleClaim.Controllers
                 AddErrors(result);
             }
 
-            ViewBag.Name = new SelectList(DbContext.Roles.ToList(), "Name", "Name");
+            ViewBag.Name = new SelectList(DbContext.Roles.Where(x => x.Name != "spadmin").ToList(), "Name", "Name");
             return View(registerViewModel);
         }
 

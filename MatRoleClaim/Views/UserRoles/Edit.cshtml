@@ -35,18 +35,22 @@
                 <div class="col-md-10">
                     @for (int i = 0; i < Model.Roles.Count(); i++)
                     {
-                        <div class="form-check">
-                            @Html.HiddenFor(model => model.Roles[i].Id)
-                            @Html.HiddenFor(model => model.Roles[i].Name)
-                            @Html.HiddenFor(model => model.Roles[i].Description)
+                        if (Model.Roles[i].Name != "spadmin")
+                        {
+                            <div class="form-check">
+                                @Html.HiddenFor(model => model.Roles[i].Id)
+                                @Html.HiddenFor(model => model.Roles[i].Name)
+                                @Html.HiddenFor(model => model.Roles[i].Description)
 
-                            @*@Html.CheckBoxFor(model => model.Roles[i].Status) Html hepler ile yöntem*@
+                                @*@Html.CheckBoxFor(model => model.Roles[i].Status) Html hepler ile yöntem*@
 
-                            <input id="Roles[@i].Status" name="Roles[@i].Status" value="true" @(Model.Roles[i].Status ? "checked=\"checked\"" : "") type="checkbox" class="form-check-input" />
-                            <label class="form-check-label" for="Roles[@i].Status">
-                                @string.Format("{0} ({1})", Model.Roles[i].Name, Model.Roles[i].Status)
-                            </label>
-                        </div>
+                                <input id="Roles[@i].Status" name="Roles[@i].Status" value="true" @(Model.Roles[i].Status ? "checked=\"checked\"" : "") type="checkbox" class="form-check-input" />
+                                <label class="form-check-label" for="Roles[@i].Status">
+                                    @string.Format("{0} ({1})", Model.Roles[i].Name, Model.Roles[i].Status)
+                                </label>
+                            </div>
+                        }
+
                     }
                 </div>
             </div>

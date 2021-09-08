@@ -22,7 +22,7 @@ namespace MatRoleClaim
             ConfigureAuth(app);
 
             // Create default roles and users
-            //CreateDefaultRolesUsers();
+            CreateDefaultRolesUsers();
         }
 
         private void CreateDefaultRolesUsers()
@@ -33,34 +33,35 @@ namespace MatRoleClaim
             var userManager = new ApplicationUserManager(new ApplicationUserStore(context));
 
             //creating Creating SuperAdmin role, user and default 
-            if (!roleManager.RoleExists("Administrator"))
+            if (!roleManager.RoleExists("spadmin"))
             {
                 // create ALL Claims
                 CreateClaims();
 
                 // create Admin Role  
-                var roleAdmin = new ApplicationRole { Name = "Administrator", Description = "SuperAdmin user role. Change and configurate roles, users..." };
+                var roleAdmin = new ApplicationRole { Name = "spadmin", Description = "spadmin" };
                 roleManager.Create(roleAdmin);
 
                 // add to Super Admin role all claims
                 roleManager.AddClaims(roleAdmin.Id, context.Claims.Select(x=>x.Id));
                 
                 // create a Admin super user                 
-                var userAdmin = new ApplicationUser { UserName = "admin@gmail.com", Email = "admin@gmail.com",Phone = "0865251224", Name = "Admin", Address="Admin"};
+                var userAdmin = new ApplicationUser { UserName = "spadmin@gmail.com", Email = "spadmin@gmail.com", Phone = "0865251224", Name = "spadmin", Address= "spadmin" };
                 string userAdminPassword = "123456";
                 var chkUser = userManager.Create(userAdmin, userAdminPassword);
 
                 // Add default User to Role Admin   
                 if (chkUser.Succeeded)
                 {
-                    var result1 = userManager.AddToRole(userAdmin.Id, "Administrator");
+                    var result1 = userManager.AddToRole(userAdmin.Id, "spadmin");
                 }
+            }
 
-                //Blog newPost1 = new Blog { Id = 1, Title = "Test 1", Content = "Test 1 content...", AuthorId = userAdmin.Id, PostDate = DateTime.Now };
-                //Blog newPost2 = new Blog { Id = 2, Title = "Test 2", Content = "Test 2 content...", AuthorId = userAdmin.Id, PostDate = DateTime.Now };
-                //context.Blogs.Add(newPost1);
-                //context.Blogs.Add(newPost2);
-                //context.SaveChanges();
+            // creating Creating Trainer   
+            if (!roleManager.RoleExists("Administrator"))
+            {
+                var role = new ApplicationRole { Name = "Administrator", Description = "Administrator" };
+                roleManager.Create(role);
             }
 
             // creating Creating Trainer   
