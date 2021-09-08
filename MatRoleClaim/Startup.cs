@@ -22,7 +22,7 @@ namespace MatRoleClaim
             ConfigureAuth(app);
 
             // Create default roles and users
-            CreateDefaultRolesUsers();
+            //CreateDefaultRolesUsers();
         }
 
         private void CreateDefaultRolesUsers()
