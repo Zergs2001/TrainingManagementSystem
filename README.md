@@ -5,6 +5,6 @@
 - Open Package Manager Console
 - Run update-database
 - Run Project
-# Account Admin
-- User: admin@gmail.com
+# Account Super Admin
+- User: spadmin@gmail.com
 - Password: 123456
