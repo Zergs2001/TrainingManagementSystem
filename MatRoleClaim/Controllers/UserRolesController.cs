@@ -34,12 +34,27 @@ namespace MatRoleClaim.Controllers
         }
 
         [RoleClaimsAuthorize("UserRoles", "Show")]
-        public ActionResult ManageAccount()
+        public ActionResult ManageAccount(string name)
         {
+            if (String.IsNullOrEmpty(name))
+            {
+                List<ApplicationRole> allroles1 = DbContext.Roles.ToList();
+                List<UserRolesViewModel> allusersWithRoles1 = new List<UserRolesViewModel>();
+
+                foreach (var user in DbContext.Users)
+                {
+                    UserRolesViewModel userWithRoles = new UserRolesViewModel { UserId = user.Id, UserName = user.UserName, UserEmail = user.Email, Roles = new List<RoleViewModel>() };
+                    user.Roles.ToList().ForEach(x => userWithRoles.Roles.Add((RoleViewModel)allroles1.Find(y => y.Id == x.RoleId)));
+                    allusersWithRoles1.Add(userWithRoles);
+                }
+
+                return View(allusersWithRoles1);
+            }
+
             List<ApplicationRole> allroles = DbContext.Roles.ToList();
             List<UserRolesViewModel> allusersWithRoles = new List<UserRolesViewModel>();
 
-            foreach (var user in DbContext.Users)
+            foreach (var user in DbContext.Users.Where(x => x.UserName.Contains(name)))
             {
                 UserRolesViewModel userWithRoles = new UserRolesViewModel { UserId = user.Id, UserName = user.UserName, UserEmail = user.Email, Roles = new List<RoleViewModel>() };
                 user.Roles.ToList().ForEach(x => userWithRoles.Roles.Add((RoleViewModel)allroles.Find(y => y.Id == x.RoleId)));
@@ -47,6 +62,7 @@ namespace MatRoleClaim.Controllers
             }
 
             return View(allusersWithRoles);
+
         }
 
         [RoleClaimsAuthorize("UserRoles", "Show")]

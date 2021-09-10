@@ -1,4 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
+@{ 
+    List<string> currentUserRoles = ViewBag.CurrentUserRoles;
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,25 +25,38 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="@Url.Action("Index", "UserRoles")">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("ManageAccount", "UserRoles")">Manager Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Roles")">Manager Account Level</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "CourseCategories")">Manager Cousce Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Courses")">Manager Cousce</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "RoleClaims")">Setting Accout Level</a>
-                    </li>
+                    if (currentUserRoles.Where(x => x.Contains("spadmin") || x.Contains("Administrator") || x.Contains("Training Staff")).Count() > 0)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("ManageAccount", "UserRoles")">Manager Account</a>
+                        </li>
+                        if (currentUserRoles.Where(x => x.Contains("spadmin") || x.Contains("Administrator")).Count() > 0)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Roles")">Manager Account Level</a>
+                            </li>
+                        }
+                        if (currentUserRoles.Where(x => x.Contains("spadmin") || x.Contains("Training Staff")).Count() > 0)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "CourseCategories")">Manager Cousce Category</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Courses")">Manager Cousce</a>
+                            </li>
+                        }
+                        if (currentUserRoles.Where(x => x.Contains("spadmin") || x.Contains("Administrator")).Count()>0)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "RoleClaims")">Setting Accout Level</a>
+                            </li>
+                        }
+                    }
+
                 }
                 @*<li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Admin")">Admin</a>
-                    </li>*@
+            <a class="nav-link" href="@Url.Action("Index", "Admin")">Admin</a>
+        </li>*@
                 @Html.Partial("_LoginPartial")
             </ul>
             @*<form class="form-inline my-2 my-lg-0">

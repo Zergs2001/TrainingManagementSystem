@@ -11,7 +11,7 @@ using MatRoleClaim.Models;
 
 namespace MatRoleClaim.Controllers
 {
-    public class CourseCategoriesController : Controller
+    public class CourseCategoriesController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

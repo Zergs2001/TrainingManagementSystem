@@ -49,7 +49,7 @@ namespace MatRoleClaim.Controllers
             }
             else if (q.Where(x => x.Contains("Training Staff")).Count() > 0)
             {
-                ViewBag.Name = new SelectList(DbContext.Roles.Where(x => x.Name != "spadmin" && x.Name != "Administrator").ToList(), "Name", "Name");
+                ViewBag.Name = new SelectList(DbContext.Roles.Where(x => x.Name != "spadmin" && x.Name != "Administrator" && x.Name != "Training Staff").ToList(), "Name", "Name");
             }
             else
             {

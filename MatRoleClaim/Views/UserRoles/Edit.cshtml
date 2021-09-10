@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit Type User";
+    List<string> currentUserRoles = ViewBag.CurrentUserRoles;
 }
 <div class="m-5">
 
@@ -37,18 +38,42 @@
                     {
                         if (Model.Roles[i].Name != "spadmin")
                         {
-                            <div class="form-check">
-                                @Html.HiddenFor(model => model.Roles[i].Id)
-                                @Html.HiddenFor(model => model.Roles[i].Name)
-                                @Html.HiddenFor(model => model.Roles[i].Description)
+                            if (currentUserRoles.Where(x => x.Contains("spadmin") || x.Contains("Administrator")).Count() > 0)
+                            {
+                                if (Model.Roles[i].Name == "Administrator" || Model.Roles[i].Name == "Training Staff")
+                                {
+                                    <div class="form-check">
+                                        @Html.HiddenFor(model => model.Roles[i].Id)
+                                        @Html.HiddenFor(model => model.Roles[i].Name)
+                                        @Html.HiddenFor(model => model.Roles[i].Description)
 
-                                @*@Html.CheckBoxFor(model => model.Roles[i].Status) Html hepler ile yöntem*@
+                                        @*@Html.CheckBoxFor(model => model.Roles[i].Status) Html hepler ile yöntem*@
 
-                                <input id="Roles[@i].Status" name="Roles[@i].Status" value="true" @(Model.Roles[i].Status ? "checked=\"checked\"" : "") type="checkbox" class="form-check-input" />
-                                <label class="form-check-label" for="Roles[@i].Status">
-                                    @string.Format("{0} ({1})", Model.Roles[i].Name, Model.Roles[i].Status)
-                                </label>
-                            </div>
+                                        <input id="Roles[@i].Status" name="Roles[@i].Status" value="true" @(Model.Roles[i].Status ? "checked=\"checked\"" : "") type="checkbox" class="form-check-input" />
+                                        <label class="form-check-label" for="Roles[@i].Status">
+                                            @string.Format("{0} ({1})", Model.Roles[i].Name, Model.Roles[i].Status)
+                                        </label>
+                                    </div>
+                                }
+                            }
+                            else if (currentUserRoles.Where(x => x.Contains("spadmin") || x.Contains("Training Staff")).Count() > 0)
+                            {
+                                if (Model.Roles[i].Name == "Trainer" || Model.Roles[i].Name == "Trainee")
+                                {
+                                    <div class="form-check">
+                                        @Html.HiddenFor(model => model.Roles[i].Id)
+                                        @Html.HiddenFor(model => model.Roles[i].Name)
+                                        @Html.HiddenFor(model => model.Roles[i].Description)
+
+                                        @*@Html.CheckBoxFor(model => model.Roles[i].Status) Html hepler ile yöntem*@
+
+                                        <input id="Roles[@i].Status" name="Roles[@i].Status" value="true" @(Model.Roles[i].Status ? "checked=\"checked\"" : "") type="checkbox" class="form-check-input" />
+                                        <label class="form-check-label" for="Roles[@i].Status">
+                                            @string.Format("{0} ({1})", Model.Roles[i].Name, Model.Roles[i].Status)
+                                        </label>
+                                    </div>
+                                }
+                            }
                         }
 
                     }
@@ -63,8 +88,8 @@
         </div>
     }
 
-   @* <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
+    @* <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
 
 </div>
