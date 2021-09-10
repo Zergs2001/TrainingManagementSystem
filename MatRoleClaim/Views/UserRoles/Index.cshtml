@@ -4,12 +4,13 @@
     ViewBag.Title = "Home Page Admin";
 }
 <div class="m-5">
-    <h2>Manage Training Staff Accounts</h2>
+    @*Manage Trainer Accounts*@
+    <h2 class="mt-5">Manage Trainer Accounts</h2>
     <table class="table">
         <tbody>
             @foreach (var user in Model)
             {
-                var check = user.Roles.Where(x => x.Name == "Training Staff").ToList();
+                var check = user.Roles.Where(x => x.Name == "Trainer").ToList();
                 if (check.Count > 0)
                 {
                     <tr class="col-12">
@@ -42,13 +43,12 @@
         </tbody>
     </table>
 
-    @*Manage Trainer Accounts*@
-    <h2 class="mt-5">Manage Trainer Accounts</h2>
+    <h2>Manage Trainee Account</h2>
     <table class="table">
         <tbody>
             @foreach (var user in Model)
             {
-                var check = user.Roles.Where(x => x.Name == "Trainer").ToList();
+                var check = user.Roles.Where(x => x.Name == "Trainee").ToList();
                 if (check.Count > 0)
                 {
                     <tr class="col-12">

@@ -1,86 +1,76 @@
-﻿@model MatRoleClaim.Models.ViewModels.IndexViewModel
+﻿@using Microsoft.AspNet.Identity
+@model MatRoleClaim.Models.ViewModels.IndexViewModel
 @{
     ViewBag.Title = "Manage";
-
+    var q = ViewBag.DataCouser;
 
 }
 <div class="m-5">
     @if (ViewBag.TrainerCount != 0)
     {
-        var i = 0;
-        <div class="row">
-            @foreach (var item in ViewBag.Trainer)
+        <div class="row mb-5">
+            @if (q != null)
             {
+                <div class="card col-12">
+                    <div class="card-body">
+                        <form action="/" method="post">
+                            <div class="row">
 
-                if (i == 0)
-                {
-                    <div class="card col-3">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">@item.Cource.Name</h5>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <p class="text-center">
-                                @Html.ActionLink("View", "Details", new { id = item.CourceId })
-                            </p>
-                        </div>
+
+                                <div class="form-group col-4">
+                                    <label class="control-label col-md-12">Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="name" value="@q.Name" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label class="control-label col-md-12">Trainer name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="name" value="@User.Identity.GetUserName()" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label class="control-label col-md-12">Sysllabus</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="name" value="@q.SysllabusLink" class="form-control" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
                     </div>
-                    i++;
-                }
-
-
-            }
-            <div class="col-1"></div>
-            <div class="card col-8">
-                <div class="card-body">
-                    <form action="/" method="post">
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label class="control-label col-md-12">Name</label>
-                                <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="control-label col-md-12">Traner ID</label>
-                                <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="control-label col-md-12">Id</label>
-                                <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="control-label col-md-12">Trainer name</label>
-                                <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="control-label col-md-12">Sysllabus</label>
-                                <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="control-label col-md-12">Room</label>
-                                <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
-                                </div>
-                            </div>
-
-                        </div>
-                    </form>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="card col-12">
+                    <div class="card-body">
+                        <form action="/" method="post">
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    <label class="control-label col-md-12">Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="name" value="" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label class="control-label col-md-12">Trainer name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="name" value="" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label class="control-label col-md-12">Sysllabus</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="name" value="" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            }
+
         </div>
         <div class="row">
             @foreach (var item in ViewBag.Trainer)
@@ -97,7 +87,7 @@
                         <br />
                         <br />
                         <p class="text-center">
-                            @Html.ActionLink("View", "Details", new { id = item.CourceId })
+                            @Html.ActionLink("View", "Index", new { idcouse = item.CourceId })
                         </p>
                     </div>
                 </div>
@@ -108,71 +98,27 @@
     @*TraineeCount*@
     @if (ViewBag.TraineeCount != 0)
     {
-        var y = 0;
-        <div class="row">
-            @foreach (var item in ViewBag.Trainee)
-            {
-                if (y == 0)
-                {
-                    <div class="card col-3">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">@item.Cource.Name</h5>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <p class="text-center">
-                                @*@Html.ActionLink("View", "Details", new { id = item.CourceId })*@
-                                <a href="#">View</a>
-                            </p>
-                        </div>
-                    </div>
-                    y++;
-                }
-            }
-            <div class="col-1"></div>
-            <div class="card col-8">
+        <div class="row mb-5">
+            <div class="card col-12">
                 <div class="card-body">
                     <form action="/" method="post">
                         <div class="row">
-                            <div class="form-group col-6">
+                            <div class="form-group col-4">
                                 <label class="control-label col-md-12">Name</label>
                                 <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
+                                    <input type="text" name="name" value="" class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group col-6">
-                                <label class="control-label col-md-12">Traner ID</label>
-                                <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="control-label col-md-12">Id</label>
-                                <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-4">
                                 <label class="control-label col-md-12">Trainee name</label>
                                 <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
+                                    <input type="text" name="name" value="" class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-4">
                                 <label class="control-label col-md-12">Sysllabus</label>
                                 <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="control-label col-md-12">Room</label>
-                                <div class="col-md-12">
-                                    <input type="type" name="name" value="" class="form-control" />
+                                    <input type="text" name="name" value="" class="form-control" />
                                 </div>
                             </div>
 
@@ -197,7 +143,7 @@
                         <br />
                         <p class="text-center">
                             @*@Html.ActionLink("View", "Details", new { id = item.CourceId })*@
-                            <a href="#">View</a>
+                            @Html.ActionLink("View", "Index", new { idcouse = item.CourceId })
                         </p>
                     </div>
                 </div>
@@ -232,7 +178,7 @@
 
     <p class="text-success">@ViewBag.StatusMessage</p>
     <div>
-        <h4>Change your account settings</h4>
+        @*<h4>Change your account settings</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>Password:</dt>
@@ -246,6 +192,18 @@
                 {
                     @Html.ActionLink("Create", "SetPassword")
                 }
+                ]
+            </dd>
+
+        </dl>*@
+
+        <h4>Change account </h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Account:</dt>
+            <dd>
+                [
+                    @Html.ActionLink("Change", "Edit", new { id = User.Identity.GetUserId() })
                 ]
             </dd>
 
